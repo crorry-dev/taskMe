@@ -190,11 +190,13 @@ CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:
 CORS_ALLOW_CREDENTIALS = True
 
 # Content Security Policy (django-csp 4.0+ format)
+# Note: 'unsafe-inline' for style-src is needed for Material-UI and other CSS-in-JS libraries
+# For production, consider implementing nonce-based CSP for enhanced security
 CONTENT_SECURITY_POLICY = {
     'DIRECTIVES': {
         'default-src': ("'self'",),
         'script-src': ("'self'",),
-        'style-src': ("'self'", "'unsafe-inline'"),
+        'style-src': ("'self'", "'unsafe-inline'"),  # Required for CSS-in-JS (Material-UI)
         'img-src': ("'self'", "data:", "https:"),
         'font-src': ("'self'",),
         'connect-src': ("'self'",),
