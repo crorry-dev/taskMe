@@ -12,13 +12,14 @@ import {
 } from '@mui/material';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import SocialAuthButtons from '../components/SocialAuthButtons';
 
 const Register = () => {
   const [formData, setFormData] = useState({
     email: '',
     username: '',
     password: '',
-    password2: '',
+    password_confirm: '',
     first_name: '',
     last_name: '',
   });
@@ -39,7 +40,7 @@ const Register = () => {
     e.preventDefault();
     setError('');
 
-    if (formData.password !== formData.password2) {
+    if (formData.password !== formData.password_confirm) {
       setError('Passwords do not match');
       return;
     }
@@ -146,8 +147,8 @@ const Register = () => {
               fullWidth
               label="Confirm Password"
               type="password"
-              name="password2"
-              value={formData.password2}
+              name="password_confirm"
+              value={formData.password_confirm}
               onChange={handleChange}
               margin="normal"
               required
@@ -165,7 +166,9 @@ const Register = () => {
             </Button>
           </form>
 
-          <Box sx={{ textAlign: 'center', mt: 2 }}>
+          <SocialAuthButtons mode="register" />
+
+          <Box sx={{ textAlign: 'center', mt: 3 }}>
             <Typography variant="body2">
               Already have an account?{' '}
               <Link component={RouterLink} to="/login">

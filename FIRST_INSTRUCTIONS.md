@@ -1,0 +1,2 @@
+# FIRST_INSTRUCTIONS.md
+Du bist GitHub Copilot. Baue „CommitQuest": modernes Commitment-ToDo mit Belohnungen, Proof (Foto/Video/Dokument/Peer/Sensor), Duellen/Teams/Community & globalen Challenges. Stack: React (Web) + Django (API) + moderne Tools. Priorität: maximale Sicherheit (OWASP, Zero-Trust, least privilege), saubere DX, Apple-artige intuitive UI. Arbeite task-basiert, schreibe Tests, dokumentiere Entscheidungen, halte Repo konsistent über Geräte/Devs/Modelle.

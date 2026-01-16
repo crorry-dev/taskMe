@@ -1,6 +1,17 @@
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
+// Dynamically use the same host as the frontend for API calls
+// This allows testing from mobile devices on the same network
+const getApiUrl = () => {
+  if (process.env.REACT_APP_API_URL) {
+    return process.env.REACT_APP_API_URL;
+  }
+  // Use same hostname as frontend, but port 8000 for backend
+  const hostname = window.location.hostname;
+  return `http://${hostname}:8000/api`;
+};
+
+const API_URL = getApiUrl();
 
 // Create axios instance with default config
 const api = axios.create({

@@ -63,6 +63,13 @@ class TaskViewSet(viewsets.ModelViewSet):
         # Award points to user
         request.user.add_points(task.reward_points)
         
+        # Award credits for task completion
+        try:
+            from rewards.services import CreditService
+            CreditService.reward_task_completion(request.user, task)
+        except Exception:
+            pass  # Don't fail task completion if credit reward fails
+        
         return Response(TaskSerializer(task).data)
     
     @action(detail=True, methods=['post'])

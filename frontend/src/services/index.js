@@ -113,3 +113,40 @@ export const proofService = {
     return response.data;
   },
 };
+
+// Credit Economy Service
+export const creditService = {
+  getWallet: async () => {
+    const response = await api.get('/rewards/credits/');
+    return response.data;
+  },
+
+  getBalance: async (checkAmount = null) => {
+    const params = checkAmount ? { check_amount: checkAmount } : {};
+    const response = await api.get('/rewards/credits/balance/', { params });
+    return response.data;
+  },
+
+  getTransactions: async (options = {}) => {
+    const response = await api.get('/rewards/credits/transactions/', { params: options });
+    return response.data;
+  },
+
+  calculateCost: async (challengeType, proofType = null) => {
+    const response = await api.post('/rewards/credits/cost/', {
+      challenge_type: challengeType,
+      proof_type: proofType,
+    });
+    return response.data;
+  },
+
+  getConfig: async () => {
+    const response = await api.get('/rewards/credits/config/');
+    return response.data;
+  },
+
+  canAfford: async (amount) => {
+    const result = await api.get('/rewards/credits/balance/', { params: { check_amount: amount } });
+    return result.data.can_afford;
+  },
+};

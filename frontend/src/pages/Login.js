@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import SocialAuthButtons from '../components/SocialAuthButtons';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -94,7 +95,9 @@ const Login = () => {
             </Button>
           </form>
 
-          <Box sx={{ textAlign: 'center', mt: 2 }}>
+          <SocialAuthButtons mode="login" />
+
+          <Box sx={{ textAlign: 'center', mt: 3 }}>
             <Typography variant="body2">
               Don't have an account?{' '}
               <Link component={RouterLink} to="/register">

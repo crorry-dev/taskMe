@@ -30,7 +30,13 @@ urlpatterns = [
     
     # API endpoints
     path('api/auth/', include('accounts.urls')),
+    path('api/auth/social/', include('allauth.socialaccount.urls')),
+    path('api/', include('challenges.urls')),
     path('api/', include('tasks.urls')),
+    path('api/rewards/', include('rewards.urls')),
+    path('api/teams/', include('teams.urls')),
+    path('api/notifications/', include('notifications.urls')),
+    path('api/debug/', include('debug_feedback.urls')),
 ]
 
 # Serve media files in development
